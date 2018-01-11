@@ -1,0 +1,33 @@
+Polling App
+
+1. Create a basic user login/registration system.
+    Based on this system, need to create polling system.
+    Polling System is basically an interface from where user can create Polls.  
+
+Example of a poll is        
+Question: Who is the best cricketer in India
+Options:ABC
+        XYZ
+        DEF
+        OFG     
+so basically a user can select any of the above option and submit it.
+
+2. Pages to create
+    a. Create a new Poll           
+    b. View All Existing Poll          
+    c. Take Poll          
+these will be a standard left menu in all the above pages with opens (Create and View ALL).Only a logged in user can create a poll or view all polls.           
+
+Create Poll Page :      
+This will have a form where user can add a new poll with question and options. Also add a date picker here so that person can specificy till when the poll will be active. After that poll, it will become deactive and no one can take that poll.
+
+View All Polls :            
+This page will have a table which will show all polls created in the system. This will have paging.
+
+Take Poll :     
+Here user can take/give his answer for any poll. This answer should be recorded in database. A user can give only one unique answer for a single poll. After giving answer he should be able to see summary of all answer given by different users.
+When a person gives his answer, the main admin who created this poll should get an email notification of this answer.  
+
+Note :  important that the left menu should be a single html file. The left mene should not be repeated in different pages, rather just required
+
+You can find api and its details on https://github.com/nodeexcel/api_etech_testing_polls
