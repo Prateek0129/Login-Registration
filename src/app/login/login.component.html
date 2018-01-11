@@ -4,11 +4,11 @@
         Email:
     </label>
     <input type="email" autocomplete="off" id="emailbox" class="form-control" formControlName="email" placeholder="Email" required>
-  <div *ngIf="loginForm.controls['email'].errors && !loginForm.controls['email'].pristine" class="error-msg">
-      <div [hidden]="!loginForm.controls['email'].errors.required " class="alert alert-danger alert-override"><strong>Email</strong> is required.</div>
+    <div *ngIf="loginForm.controls['email'].errors && !loginForm.controls['email'].pristine" class="error-msg">
+      <div [hidden]="!loginForm.controls['email'].errors.required "      class="alert alert-danger alert-override"><strong>Email</strong> is required.</div>
       <div [hidden]="!loginForm.controls['email'].errors.patternInvalid" class="alert alert-danger alert-override"><strong>Email</strong> is invalid.</div>
     </div>
-</div>
+  </div>
   <div class="form-inside">
     <label for="pwdbox">
       Password:
@@ -19,6 +19,6 @@
     </div>
   </div>
   <div>
-    <button type="submit" class="btn btn-danger btn-left btn-md" [ngClass] = "{'color': !loginForm.invalid }" [disabled]="loginForm.invalid">Login</button>
+    <button type="submit" class="btn btn-danger btn-block btn-alter" [ngClass] = "{'color': !loginForm.invalid }" [disabled]="loginForm.invalid">Login</button>
   </div>
 </form>

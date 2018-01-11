@@ -1,3 +1,33 @@
-<p>
-  register works!
-</p>
+<form  [formGroup]="registerForm" class="formbox">
+        <div class="form-inside">
+            <label for="emailbox">
+                Email:
+            </label>
+            <input type="email" autocomplete="off" id="emailbox" class="form-control" formControlName="email" placeholder="Email" required>
+            <div *ngIf="registerForm.controls['email'].errors && !registerForm.controls['email'].pristine" class="error-msg">
+                <div [hidden]="!registerForm.controls['email'].errors.required "      class="alert alert-danger alert-override"><strong>Email</strong> is required.</div>
+                <div [hidden]="!registerForm.controls['email'].errors.patternInvalid" class="alert alert-danger alert-override"><strong>Email</strong> is invalid.</div>
+            </div>
+        </div>
+
+    <div class="form-inside">
+        <label for="pwdbox">
+          Password:
+        </label>
+        <input type="password" autocomplete="off" id="pwdbox" class="form-control" formControlName="password" placeholder="Password" required>
+        <div *ngIf="registerForm.controls['password'].errors && !registerForm.controls['password'].pristine">
+            <div [hidden]="!registerForm.controls['password'].errors.required" class="alert alert-danger alert-override"><strong>Password</strong> is required.</div>
+        </div>
+    </div>
+
+    <div class="form-inside">
+        <label for="cnfpwdbox">
+            Confirm Password:
+        </label>
+        <input type="password" autocomplete="off" id="cnfpwdbox" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password" required>
+        <div *ngIf="registerForm.controls.confirmPassword.errors?.MatchPassword" class="alert alert-danger alert-override"><strong>Password</strong> Do Not Match</div>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-danger btn-md btn-block btn-alter" [ngClass] = "{'color': !registerForm.invalid }" [disabled]="registerForm.invalid">Register</button>
+    </div>
+</form>
