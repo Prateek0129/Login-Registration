@@ -25,9 +25,15 @@
             Confirm Password:
         </label>
         <input type="password" autocomplete="off" id="cnfpwdbox" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password" required>
-        <div *ngIf="registerForm.controls.confirmPassword.errors?.MatchPassword" class="alert alert-danger alert-override"><strong>Password</strong> Do Not Match</div>
+        <div *ngIf="registerForm.controls.confirmPassword.errors?.MatchPassword">
+            <div [hidden]="registerForm.controls.confirmPassword.value==''" class="alert alert-danger alert-override"><strong>Password</strong> Do Not Match</div>
+        </div>
     </div>
     <div>
         <button type="submit" class="btn btn-danger btn-md btn-block btn-alter" [ngClass] = "{'color': !registerForm.invalid }" [disabled]="registerForm.invalid">Register</button>
     </div>
 </form>
+<div class="register">
+    <div class="text">Already Registered?? Click </div>
+    <a class="btn btn-info login-btn-alter" routerLink='/login'>   Login   </a>
+</div>

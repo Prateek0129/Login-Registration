@@ -29,3 +29,14 @@ label {
     background-color: #5cb85c;
     border-color: #4cae4c; 
 }
+.text {
+    font-weight: 600;
+    width: 70%;
+    display: inline-block;
+    text-align: left;
+    margin-top: 1%;
+    font-size: 130%;
+}
+.login-btn-alter {
+    float: right;
+}
