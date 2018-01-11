@@ -1,0 +1,28 @@
+.form {
+    width: 36%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 5%;
+    background: #fff;
+    padding: 4%;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 6px 7px 12px -6px black;
+}
+.link1 {
+    float: left;
+    width: 46%;
+    margin-left: 3%;
+}
+
+.link2 {
+    float: right;
+    width: 46%;
+    margin-right: 3%;
+}
+.buttonLeft {
+    float: left;
+}
+.buttonRight {
+    float: right;
+}

@@ -1,0 +1,24 @@
+<form  [formGroup]="loginForm" class="formbox">
+  <div class="form-inside">
+    <label for="emailbox">
+        Email:
+    </label>
+    <input type="email" autocomplete="off" id="emailbox" class="form-control" formControlName="email" placeholder="Email" required>
+  <div *ngIf="loginForm.controls['email'].errors && !loginForm.controls['email'].pristine" class="error-msg">
+      <div [hidden]="!loginForm.controls['email'].errors.required " class="alert alert-danger alert-override"><strong>Email</strong> is required.</div>
+      <div [hidden]="!loginForm.controls['email'].errors.patternInvalid" class="alert alert-danger alert-override"><strong>Email</strong> is invalid.</div>
+    </div>
+</div>
+  <div class="form-inside">
+    <label for="pwdbox">
+      Password:
+    </label>
+    <input type="password" autocomplete="off" id="pwdbox" class="form-control" formControlName="password" placeholder="Password" required>
+    <div *ngIf="loginForm.controls['password'].errors && !loginForm.controls['password'].pristine" class="error-msg">
+      <div [hidden]="!loginForm.controls['password'].errors.required" class="alert alert-danger alert-override"><strong>Password</strong> is required.</div>
+    </div>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-danger btn-left btn-md" [ngClass] = "{'color': !loginForm.invalid }" [disabled]="loginForm.invalid">Login</button>
+  </div>
+</form>
