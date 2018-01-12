@@ -17,6 +17,7 @@
         <input type="password" autocomplete="off" id="pwdbox" class="form-control" formControlName="password" placeholder="Password" required>
         <div *ngIf="registerForm.controls['password'].errors && !registerForm.controls['password'].pristine">
             <div [hidden]="!registerForm.controls['password'].errors.required" class="alert alert-danger alert-override"><strong>Password</strong> is required.</div>
+            <div [hidden]="!registerForm.controls['password'].errors.passwordInvalid" class="alert alert-danger alert-override"><strong>Password</strong> length must be in-between 4 to 8 &amp; must contain one uppercase, lowercase, number &amp; a special character.</div>
         </div>
     </div>
 
