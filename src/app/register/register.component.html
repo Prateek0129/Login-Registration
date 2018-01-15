@@ -31,11 +31,15 @@
         </div>
     </div>
     <div class="form-inside">
+        <div class="role">
         <label for="role">
             Select Role 
         </label>
-        <input type="radio" name="role" formControlName="role" id="role" value="admin"> Admin 
-        <input type="radio" name="role" formControlName="role" id="role" value="guest"> Guest
+        <select id="role" formControlName="role" required class="dropdown">
+        <option value="admin"> Admin  </option>
+        <option value="guest"> Guest  </option>
+        </select>
+        </div>
         <div *ngIf="!registerForm.controls['email'].errors && !registerForm.controls['password'].errors && !registerForm.controls.confirmPassword.errors?.MatchPassword">
             <div [hidden]="!registerForm.controls['role'].errors" class="alert alert-danger alert-override">Please select a <strong>Role.</strong></div>
         </div>

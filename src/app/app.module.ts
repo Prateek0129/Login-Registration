@@ -9,7 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './login.service';
-
+import { RegisterService } from './register.service'
 @NgModule({
 
   imports: [
@@ -23,7 +23,7 @@ import { LoginService } from './login.service';
     LoginComponent,
     RegisterComponent
   ],
-  providers: [LoginService],
+  providers: [LoginService, RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

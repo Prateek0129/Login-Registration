@@ -3,7 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators  } from '@angular/forms
 import { patternValidator } from '../shared/pattern-validator';
 import { PasswordValidation } from '../shared/password-match';
 import { passwordPattern } from '../shared/password-pattern';
-import { LoginService } from '../login.service';
+import { RegisterService } from '../register.service';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   spin:boolean = false;
   registerForm: FormGroup;
 
-  constructor(public loginService: LoginService ) { }
+  constructor(public registerService: RegisterService ) { }
 
   ngOnInit() {
     this.createForm();
@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
 
   onRegister(post) {
     this.spin = true
-    this.loginService.onRegister(post).then(()=>{
+    this.registerService.onRegister(post).then(()=>{
     this.spin = false;
     });
   }
