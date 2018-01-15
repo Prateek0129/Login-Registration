@@ -1,4 +1,4 @@
-<form  [formGroup]="registerForm" class="formbox">
+<form  [formGroup]="registerForm" class="formbox" (submit)="onRegister(registerForm.value)">
         <div class="form-inside">
             <label for="emailbox">
                 Email:
@@ -30,8 +30,19 @@
             <div [hidden]="registerForm.controls.confirmPassword.value==''" class="alert alert-danger alert-override"><strong>Password</strong> Do Not Match</div>
         </div>
     </div>
-    <div>
+    <div class="form-inside">
+        <label for="role">
+            Select Role 
+        </label>
+        <input type="radio" name="role" formControlName="role" id="role" value="admin"> Admin 
+        <input type="radio" name="role" formControlName="role" id="role" value="guest"> Guest
+        <div *ngIf="!registerForm.controls['email'].errors && !registerForm.controls['password'].errors && !registerForm.controls.confirmPassword.errors?.MatchPassword">
+            <div [hidden]="!registerForm.controls['role'].errors" class="alert alert-danger alert-override">Please select a <strong>Role.</strong></div>
+        </div>
+    </div>
+    <div class="submit">
         <button type="submit" class="btn btn-danger btn-md btn-block btn-alter" [ngClass] = "{'color': !registerForm.invalid }" [disabled]="registerForm.invalid">Register</button>
+        <div *ngIf=spin class="loader"></div>
     </div>
 </form>
 <div class="register">
