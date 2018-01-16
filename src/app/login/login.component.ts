@@ -10,12 +10,12 @@ import { LoginService } from '../login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor(public loginService: LoginService) { }
   
   spin:boolean=false;
   loginForm: FormGroup;
-  
+
+  constructor(public loginService: LoginService) { }
+
     ngOnInit() {
     this.createForm();
   }

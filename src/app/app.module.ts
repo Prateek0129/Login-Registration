@@ -9,7 +9,8 @@ import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './login.service';
-import { RegisterService } from './register.service'
+import { RegisterService } from './register.service';
+import { HttpService } from './http.service';
 @NgModule({
 
   imports: [
@@ -23,7 +24,11 @@ import { RegisterService } from './register.service'
     LoginComponent,
     RegisterComponent
   ],
-  providers: [LoginService, RegisterService],
+  providers: [
+    LoginService,
+    RegisterService,
+    HttpService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister(post) {
-    this.spin = true
+    this.spin = true;
     this.registerService.onRegister(post).then(()=>{
     this.spin = false;
     });
