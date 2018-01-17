@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { promise } from 'selenium-webdriver';
 import { HttpErrorResponse } from '@angular/common/http/src/response';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class HttpService {
-  url:string = "https://secure-refuge-14993.herokuapp.com";
   constructor(private http: HttpClient) { }
   onLogin(post) {
     return new Promise((resolve, reject) => {
-      this.http.get(`${this.url}/login`, {
+      this.http.get(environment['apiBase'] +'/login', {
         params: new HttpParams().set('username', post.email).set('password', post.password)
       })
         .subscribe(
@@ -33,7 +33,7 @@ export class HttpService {
 
   onRegister(post) {
     return new Promise((resolve, reject) => {
-      this.http.get(`${this.url}/add_user`, {
+      this.http.get(environment['apiBase'] +'/add_user', {
         params: new HttpParams().set('username', post.email).set('password', post.password).set('role', post.role)
       })
         .subscribe((data) => { 
