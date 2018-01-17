@@ -1,0 +1,68 @@
+<form [formGroup]="registerForm" class="formbox" (submit)="onRegister(registerForm.value)">
+    <div class="form-inside">
+        <label for="emailbox">
+            Email:
+        </label>
+        <input type="email" autocomplete="off" id="emailbox" class="form-control" formControlName="email" placeholder="Email" required>
+        <div *ngIf="registerForm.controls['email'].errors && !registerForm.controls['email'].pristine" class="error-msg">
+            <div [hidden]="!registerForm.controls['email'].errors.required " class="alert alert-danger alert-override">
+                <strong>Email</strong> is required.</div>
+            <div [hidden]="!registerForm.controls['email'].errors.patternInvalid" class="alert alert-danger alert-override">
+                <strong>Email</strong> is invalid.</div>
+        </div>
+    </div>
+
+    <div class="form-inside">
+        <label for="pwdbox">
+            Password:
+        </label>
+        <input type="password" autocomplete="off" id="pwdbox" class="form-control" formControlName="password" placeholder="Password"
+            required>
+        <div *ngIf="registerForm.controls['password'].errors && !registerForm.controls['password'].pristine">
+            <div [hidden]="!registerForm.controls['password'].errors.required" class="alert alert-danger alert-override">
+                <strong>Password</strong> is required.</div>
+            <div [hidden]="!registerForm.controls['password'].errors.passwordInvalid" class="alert alert-danger alert-override">
+                <strong>Password</strong> length must be in-between 4 to 8 &amp; must contain one uppercase, lowercase, number &amp;
+                a special character.</div>
+        </div>
+    </div>
+
+    <div class="form-inside">
+        <label for="cnfpwdbox">
+            Confirm Password:
+        </label>
+        <input type="password" autocomplete="off" id="cnfpwdbox" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password"
+            required>
+        <div *ngIf="registerForm.controls.confirmPassword.errors?.MatchPassword">
+            <div [hidden]="registerForm.controls.confirmPassword.value==''" class="alert alert-danger alert-override">
+                <strong>Password</strong> Do Not Match</div>
+        </div>
+    </div>
+    <div class="form-inside">
+        <div class="role">
+            <label for="role">
+                Select Role
+            </label>
+            <select id="role" formControlName="role" required class="dropdown">
+                <option value="admin"> Admin </option>
+                <option value="guest"> Guest </option>
+            </select>
+        </div>
+        <div *ngIf="!registerForm.controls['email'].errors && !registerForm.controls['password'].errors && !registerForm.controls.confirmPassword.errors?.MatchPassword">
+            <div [hidden]="!registerForm.controls['role'].errors" class="alert alert-danger alert-override">Please select a
+                <strong>Role.</strong>
+            </div>
+        </div>
+    </div>
+    <div *ngIf=registerError class="alert alert-danger alert-override registerError">
+        {{registerError}}
+    </div>
+    <div class="submit">
+        <button type="submit" class="btn btn-danger btn-md btn-block btn-alter" [ngClass]="{'color': !registerForm.invalid }" [disabled]="registerForm.invalid">Register</button>
+        <div *ngIf=spin class="loader"></div>
+    </div>
+</form>
+<div class="register">
+    <div class="text">Already Registered?? Click </div>
+    <a class="btn btn-info login-btn-alter" routerLink='/login'> Login </a>
+</div>
