@@ -4,6 +4,7 @@ import { patternValidator } from '../shared/pattern-validator';
 import { PasswordValidation } from '../shared/password-match';
 import { passwordPattern } from '../shared/password-pattern';
 import { RegisterService } from '../register.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
   spin: boolean = false;
   registerForm: FormGroup;
 
-  constructor(public registerService: RegisterService) { }
+  constructor(public registerService: RegisterService , public router: Router) { }
 
   ngOnInit() {
     this.createForm();
@@ -32,8 +33,11 @@ export class RegisterComponent implements OnInit {
 
   onRegister(post) {
     this.spin = true;
-    this.registerService.onRegister(post).then(() => {
+    this.registerService.onRegister(post).then((id) => {
       this.spin = false;
+      if(id) {
+        this.router.navigate(['homepage']);
+      }
     }).catch((message) => {
       this.registerError = message;
       console.log(message);

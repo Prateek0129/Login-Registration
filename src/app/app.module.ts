@@ -11,6 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './login.service';
 import { RegisterService } from './register.service';
 import { HttpService } from './http.service';
+import { HomepageComponent } from './homepage/homepage.component';
+import { AuthGuard } from './auth.guard';
+import { MainService } from './main.service';
 @NgModule({
 
   imports: [
@@ -22,12 +25,15 @@ import { HttpService } from './http.service';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomepageComponent
   ],
   providers: [
     LoginService,
     RegisterService,
-    HttpService
+    HttpService,
+    AuthGuard,
+    MainService,
   ],
   bootstrap: [AppComponent]
 })

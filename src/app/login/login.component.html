@@ -1,45 +1,43 @@
-<form [formGroup]="loginForm" class="formbox" (submit)="onLogin(loginForm.value)">
-  <div class="form-inside">
-    <label for="emailbox">
-      Email:
-    </label>
-    <input type="email" autocomplete="off" id="emailbox" class="form-control" formControlName="email" name="email" placeholder="Email"
-      required>
-    <div *ngIf="loginForm.controls['email'].errors && !loginForm.controls['email'].pristine" class="error-msg">
-      <div [hidden]="!loginForm.controls['email'].errors.required" class="alert alert-danger alert-override">
-        <strong>Email</strong> is required.</div>
-      <div [hidden]="!loginForm.controls['email'].errors.patternInvalid" class="alert alert-danger alert-override">
-        <strong>Email</strong> is invalid.</div>
+<div class="form">
+  <form [formGroup]="loginForm" class="formbox" (submit)="onLogin(loginForm.value)">
+    <div class="form-inside">
+      <label for="emailbox">
+        Email:
+      </label>
+      <input type="email" autocomplete="off" id="emailbox" class="form-control" formControlName="email" name="email" placeholder="Email"
+        required>
+      <div *ngIf="loginForm.controls['email'].errors && !loginForm.controls['email'].pristine" class="error-msg">
+        <div [hidden]="!loginForm.controls['email'].errors.required" class="alert alert-danger alert-override">
+          <strong>Email</strong> is required.</div>
+        <div [hidden]="!loginForm.controls['email'].errors.patternInvalid" class="alert alert-danger alert-override">
+          <strong>Email</strong> is invalid.</div>
+      </div>
     </div>
-  </div>
-  <div class="form-inside">
-    <label for="pwdbox">
-      Password:
-    </label>
-    <input type="password" autocomplete="off" id="pwdbox" class="form-control" formControlName="password" name="password" placeholder="Password"
-      required>
-    <div *ngIf="loginForm.controls['password'].errors && !loginForm.controls['password'].pristine" class="error-msg">
-      <div [hidden]="!loginForm.controls['password'].errors.required" class="alert alert-danger alert-override">
-        <strong>Password</strong> is required.</div>
-      <div [hidden]="!loginForm.controls['password'].errors.passwordInvalid" class="alert alert-danger alert-override">
-        <strong>Password</strong> length must be in-between 4 to 8 &amp; must contain one uppercase, lowercase, number &amp; a special
-        character.</div>
+    <div class="form-inside">
+      <label for="pwdbox">
+        Password:
+      </label>
+      <input type="password" autocomplete="off" id="pwdbox" class="form-control" formControlName="password" name="password" placeholder="Password"
+        required>
+      <div *ngIf="loginForm.controls['password'].errors && !loginForm.controls['password'].pristine" class="error-msg">
+        <div [hidden]="!loginForm.controls['password'].errors.required" class="alert alert-danger alert-override">
+          <strong>Password</strong> is required.</div>
+        <div [hidden]="!loginForm.controls['password'].errors.passwordInvalid" class="alert alert-danger alert-override">
+          <strong>Password</strong> length must be in-between 4 to 8 &amp; must contain one uppercase, lowercase, number &amp; a special
+          character.</div>
+      </div>
     </div>
+    <div *ngIf=loginError class="alert alert-danger alert-override loginError">
+      {{loginError}}
+    </div>
+    <div class="submit">
+      <button type="submit" class="btn btn-danger btn-block btn-alter" [ngClass]="{'color': !loginForm.invalid }" [disabled]="loginForm.invalid">Login</button>
+      <div *ngIf=spin class="loader"></div>
+    </div>
+  </form>
+  
+  <div class="login">
+    <div class="text">New Here?? Click </div>
+    <a class="btn btn-info login-btn-alter" routerLink='/register'> Register </a>
   </div>
-  <div *ngIf=loginError class="alert alert-danger alert-override loginError">
-    {{loginError}}
-  </div>
-  <div class="submit">
-    <button type="submit" class="btn btn-danger btn-block btn-alter" [ngClass]="{'color': !loginForm.invalid }" [disabled]="loginForm.invalid">Login</button>
-    <div *ngIf=spin class="loader"></div>
-  </div>
-</form>
-
-<div class="login">
-  <div class="text">New Here?? Click </div>
-  <a class="btn btn-info login-btn-alter" routerLink='/register'> Register </a>
-</div>
-
-<div *ngIf=loginError>
-  {{loginError}}
 </div>
