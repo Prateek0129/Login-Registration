@@ -14,6 +14,9 @@ import { HttpService } from './http.service';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AuthGuard } from './auth.guard';
 import { MainService } from './main.service';
+import { CreateComponent } from './homepage/create/create.component';
+import { ViewComponent } from './homepage/view/view.component';
+import { TakeComponent } from './homepage/take/take.component';
 @NgModule({
 
   imports: [
@@ -26,7 +29,10 @@ import { MainService } from './main.service';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomepageComponent
+    HomepageComponent,
+    CreateComponent,
+    ViewComponent,
+    TakeComponent
   ],
   providers: [
     LoginService,

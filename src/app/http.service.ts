@@ -4,9 +4,11 @@ import { promise } from 'selenium-webdriver';
 import { HttpErrorResponse } from '@angular/common/http/src/response';
 import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
+import { resolve } from 'path';
 
 @Injectable()
 export class HttpService {
+  options: string;
   constructor(private http: HttpClient, public router: Router) { }
   onLogin(post) {
 
@@ -63,5 +65,17 @@ export class HttpService {
   logout() {
     localStorage.setItem('currentUser', null);
     this.router.navigate(['/']);
+  }
+  createPoll(data) {
+    return new Promise((resolve, reject) => {
+      this.options = data.option1 + "____" + data.option2 + "____" + data.option3 + "____" + data.option4;
+      this.http.get(environment['apiBase'] + '/add_poll', {
+        params: new HttpParams().set('title', data.title).set('options', this.options)
+      })
+        .subscribe((data) => {
+          if(!data['error'])
+          resolve(true);
+        });
+    })
   }
 }

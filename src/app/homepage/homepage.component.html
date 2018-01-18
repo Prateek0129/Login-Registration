@@ -1,3 +1,32 @@
-<div class="header">
-  <button (click)="logout()" class="btn btn-info btn-lg btn-alt"> Logout <span class="glyphicon glyphicon-log-out"></span> </button>
+<div class="row">
+  <div class="col-lg-12 header">
+    <div class="heading">
+      Polling System
+    </div>
+    <button (click)="logout()" class="btn btn-info btn-lg btn-alt"> Logout
+      <span class="glyphicon glyphicon-log-out"></span>
+    </button>
+  </div>
+  <div class="col-lg-12 main">
+    <div class="col-lg-2 sidebar">
+      <ul class="nav nav-pills nav-stacked">
+        <li>
+          <a routerLink="/homepage" routerLinkActive="active">Home</a>
+        </li>
+        <li>
+          <a routerLink="create" routerLinkActive="active">Create a Poll</a>
+        </li>
+        <li>
+          <a routerLink="view" routerLinkActive="active">View a Poll</a>
+        </li>
+        <li>
+          <a routerLink="take" routerLinkActive="active">Take a Poll</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-lg-10 content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
