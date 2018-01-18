@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.loginService.onLogin(post).then((token) => {
       this.spin = false;
       if(token) {
-        this.router.navigate(['homepage']);
+        this.router.navigate(['homepage/create']);
       }
     }).catch((message) => {
       this.loginError = message;

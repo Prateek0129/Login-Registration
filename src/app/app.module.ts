@@ -16,6 +16,8 @@ import { AuthGuard } from './auth.guard';
 import { CreateComponent } from './homepage/create/create.component';
 import { TakePollComponent } from './homepage/take-poll/take-poll.component';
 import { ViewPollComponent } from './homepage/view-poll/view-poll.component';
+import { HeaderComponent } from './homepage/header/header.component';
+import { SideMenuComponent } from './homepage/side-menu/side-menu.component';
 @NgModule({
 
   imports: [
@@ -31,7 +33,9 @@ import { ViewPollComponent } from './homepage/view-poll/view-poll.component';
     HomepageComponent,
     CreateComponent,
     TakePollComponent,
-    ViewPollComponent
+    ViewPollComponent,
+    HeaderComponent,
+    SideMenuComponent
   ],
   providers: [
     LoginService,

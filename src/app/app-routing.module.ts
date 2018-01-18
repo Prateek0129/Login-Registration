@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
+  { path: 'homepage', redirectTo: 'homepage/create', pathMatch: 'full'},
   { path: 'homepage', canActivate: [AuthGuard], component: HomepageComponent, children: [
     { path: 'create', component: CreateComponent},
     { path: 'viewpoll', component: ViewPollComponent},
