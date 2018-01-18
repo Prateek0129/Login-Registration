@@ -4,7 +4,6 @@ import { promise } from 'selenium-webdriver';
 import { HttpErrorResponse } from '@angular/common/http/src/response';
 import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
-import { resolve } from 'path';
 
 @Injectable()
 export class HttpService {
