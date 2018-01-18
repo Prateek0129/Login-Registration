@@ -36,6 +36,7 @@ export class CreateComponent implements OnInit {
       this.spin = false;
       setTimeout(() => {
         this.message = null;
+        this.createForm();
       }, 3000);
       }
   })

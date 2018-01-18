@@ -13,10 +13,9 @@ import { RegisterService } from './register.service';
 import { HttpService } from './http.service';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AuthGuard } from './auth.guard';
-import { MainService } from './main.service';
 import { CreateComponent } from './homepage/create/create.component';
-import { ViewComponent } from './homepage/view/view.component';
-import { TakeComponent } from './homepage/take/take.component';
+import { TakePollComponent } from './homepage/take-poll/take-poll.component';
+import { ViewPollComponent } from './homepage/view-poll/view-poll.component';
 @NgModule({
 
   imports: [
@@ -31,15 +30,14 @@ import { TakeComponent } from './homepage/take/take.component';
     RegisterComponent,
     HomepageComponent,
     CreateComponent,
-    ViewComponent,
-    TakeComponent
+    TakePollComponent,
+    ViewPollComponent
   ],
   providers: [
     LoginService,
     RegisterService,
     HttpService,
     AuthGuard,
-    MainService,
   ],
   bootstrap: [AppComponent]
 })

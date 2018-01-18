@@ -9,7 +9,10 @@
 .options {
     padding: 3% 0 3% 0;
 }
-.bold input::placeholder {
+.bold {
+    font-weight:700; 
+}
+input::placeholder {
     font-weight:700; 
 }
 .btn-alter {
