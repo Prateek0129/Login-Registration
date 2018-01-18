@@ -16,3 +16,4 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.httpService.logout();
   }
+}
