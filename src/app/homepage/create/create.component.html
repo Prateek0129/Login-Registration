@@ -1,5 +1,5 @@
 <div class="form">
-  <form [formGroup]="createTaskForm" class="formbox" (submit)="createPoll(createTaskForm.value)">
+  <form [formGroup]="createPollFormview" class="formbox" (submit)="createPoll(createPollFormview.value)">
     <div class="form-inside">
       <div class="title">
         <label for="title">
@@ -34,7 +34,7 @@
           {{message}}
         </div>
       <div class="submit">
-        <button type="submit" class="btn btn-danger btn-block btn-alter" [ngClass]="{'color': !createTaskForm.invalid }" [disabled]="createTaskForm.invalid">Submit</button>
+        <button type="submit" class="btn btn-danger btn-block btn-alter" [ngClass]="{'color': !createPollFormview.invalid }" [disabled]="createPollFormview.invalid">Submit</button>
         <div *ngIf=spin class="loader"></div>
       </div>
     </div>
