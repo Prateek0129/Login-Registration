@@ -9,17 +9,17 @@ import { HttpService } from '../../http.service';
 })
 export class CreateComponent implements OnInit {
 
-  createTaskForm: FormGroup;
+  createPollFormview: FormGroup;
   spin:boolean;
   message:string = null;
   constructor(public httpService: HttpService) { }
 
   ngOnInit() {
-    this.createForm();
+    this.createPollForm();
   }
 
-  private createForm() {
-    this.createTaskForm = new FormGroup({
+  private createPollForm() {
+    this.createPollFormview = new FormGroup({
       title: new FormControl('', Validators.required),
       option1: new FormControl('', Validators.required),
       option2: new FormControl('', Validators.required),
@@ -36,7 +36,7 @@ export class CreateComponent implements OnInit {
       this.spin = false;
       setTimeout(() => {
         this.message = null;
-        this.createForm();
+        this.createPollForm();
       }, 3000);
       }
   })
