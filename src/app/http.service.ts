@@ -77,4 +77,12 @@ export class HttpService {
         });
     })
   }
+
+  viewPolls() {
+    return new Promise((resolve, reject) => {
+      this.http.get(environment['apiBase'] + '/list_polls').subscribe((data) => {
+        resolve(data['data']);
+    });
+  })
+  }
 }
