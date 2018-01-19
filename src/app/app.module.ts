@@ -11,6 +11,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './login.service';
 import { RegisterService } from './register.service';
 import { HttpService } from './http.service';
+import { HomepageComponent } from './homepage/homepage.component';
+import { RouteAuthGuard } from './routeAuth.guard';
+import { CreateComponent } from './homepage/create/create.component';
+import { TakePollComponent } from './homepage/take-poll/take-poll.component';
+import { ViewPollComponent } from './homepage/view-poll/view-poll.component';
+import { HeaderComponent } from './homepage/header/header.component';
+import { SideMenuComponent } from './homepage/side-menu/side-menu.component';
 @NgModule({
 
   imports: [
@@ -22,12 +29,19 @@ import { HttpService } from './http.service';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomepageComponent,
+    CreateComponent,
+    TakePollComponent,
+    ViewPollComponent,
+    HeaderComponent,
+    SideMenuComponent
   ],
   providers: [
     LoginService,
     RegisterService,
-    HttpService
+    HttpService,
+    RouteAuthGuard,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,18 @@
+<div *ngIf=spin class="loader"></div>
+<div class="viewContent">
+    <div *ngFor="let poll of polls">
+        <div class="title">
+            {{poll.title}}
+        </div>
+        <div *ngFor="let option of poll.options; let i = index" class="result">
+            <div class="option{{i}}">
+                <div class="optionValue">
+                   <strong>{{i+1}}.</strong> {{option.option}}
+                </div>
+                <div class="vote">
+                    {{option.vote}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

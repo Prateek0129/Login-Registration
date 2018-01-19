@@ -1,0 +1,15 @@
+.row {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    border-top: 2px solid rgba(80,80,80,0.2);
+    padding: 0;
+    background: white;
+}
+.content {
+    padding: 1%;
+    border-left: 2px solid rgba(80,80,80,0.2);
+    min-height: 576px;
+}

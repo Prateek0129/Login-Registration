@@ -1,0 +1,58 @@
+.loader {
+    border: 10px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 10px solid;
+    width: 130px;
+    height: 130px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 23%;
+    right: 42%;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .viewContent {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .title  {
+    font-size: 150%;
+    background: rgba(80,80,80,0.2);
+    text-align: center;
+    text-transform: capitalize;
+    padding: 5px 0;
+  }
+  .result {
+    display: inline-block;
+    width: 25%;
+    font-size: 120%;
+    margin: 1px 0 1% 0;
+  }
+  .optionValue {
+    display: inline-block;
+    text-transform: capitalize;
+  }
+  .option0 {
+    padding: 3%;
+    background: rgba(255,0,0,0.2);
+  }
+  .option1 {
+    padding: 3%;
+    background: rgba(0,255,0,0.2); 
+  }
+  .option2 {
+    padding: 3%;
+    background: rgba(0,0,255,0.2);
+  }
+  .option3 {
+    padding: 3%;
+    background: rgba(255,255,0,0.2);
+  }  
+  .vote {
+  display: inline-block;
+  float: right;
+  }

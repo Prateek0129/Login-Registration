@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { patternValidator } from '../shared/pattern-validator';
 import { passwordPattern } from '../shared/password-pattern';
 import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +14,8 @@ export class LoginComponent implements OnInit {
   loginError: any;
   spin: boolean = false;
   loginForm: FormGroup;
-
-  constructor(public loginService: LoginService) { }
+ 
+  constructor(public loginService: LoginService, public router: Router) { }
 
   ngOnInit() {
     this.createForm();
@@ -28,8 +29,11 @@ export class LoginComponent implements OnInit {
 
   onLogin(post) {
     this.spin = true;
-    this.loginService.onLogin(post).then(() => {
+    this.loginService.onLogin(post).then((token) => {
       this.spin = false;
+      if(token) {
+        this.router.navigate(['homepage/create']);
+      }
     }).catch((message) => {
       this.loginError = message;
       this.spin = false;
