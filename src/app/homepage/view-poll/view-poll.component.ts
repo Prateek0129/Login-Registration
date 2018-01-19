@@ -8,8 +8,16 @@ import { HttpService } from '../../http.service';
 })
 export class ViewPollComponent implements OnInit {
 
-  constructor(public httpService:HttpService) { }
+  constructor(public httpService: HttpService) { }
+  polls: any;
+  spin: boolean;
   ngOnInit() {
+    this.spin = true;
+    this.httpService.viewPolls().then((data) => {
+      this.spin = false;
+      this.polls = data;
+      console.log(this.polls)
+    });
   }
 
 }

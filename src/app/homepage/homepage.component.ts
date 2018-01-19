@@ -8,12 +8,8 @@ import { HttpService } from '../http.service';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(public httpService:HttpService) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  logout() {
-    this.httpService.logout();
   }
 }

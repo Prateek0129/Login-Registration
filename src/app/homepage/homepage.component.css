@@ -2,40 +2,14 @@
     margin: 0;
     padding: 0;
 }
-.header {
-    height: 100px;
-    background: white;
-    position: relative;
-    padding: 0;
-}
-.heading {
-    display: inline-block;
-    font-size: 350%;
-    margin-left: 1%;
-    margin-top: 1%;
-}
-.btn-alt {
-    position: absolute;
-    top: 26%;
-    right: 6%;
-}
-.btn-alt:hover {
-    transition: box-shadow .5s;
-    box-shadow: 0 2px 2px 0 black;
-}
+
 .main {
     border-top: 2px solid rgba(80,80,80,0.2);
     padding: 0;
-}
-.sidebar {
-    margin: 0;
-    padding: 0;
     background: white;
-    height: stretch;
-    border-right: 2px solid rgba(80,80,80,0.2);
 }
 .content {
     padding: 1%;
-    background: white;
-    height: stretch;
+    border-left: 2px solid rgba(80,80,80,0.2);
+    min-height: stretch;
 }
