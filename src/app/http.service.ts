@@ -55,7 +55,7 @@ export class HttpService {
   }
 
   currentUser() {
-    if (localStorage.getItem('currentUser') != "null") {
+    if (localStorage.getItem('currentUser') != "null" && localStorage.getItem('currentUser') != null) {
       return true;
     } else {
       return false;
@@ -63,7 +63,8 @@ export class HttpService {
   }
   logout() {
     localStorage.setItem('currentUser', null);
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
+
   }
   createPoll(data) {
     return new Promise((resolve, reject) => {

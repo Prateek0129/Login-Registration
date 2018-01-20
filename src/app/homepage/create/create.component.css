@@ -4,10 +4,10 @@
     padding: 3%;
 }  
 .labelAlign {
-    margin-left: 2%;
+    float: right;
 }
 .options {
-    padding: 3% 0 3% 0;
+    padding: 3% 0;
 }
 .bold {
     font-weight:700; 

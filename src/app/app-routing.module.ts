@@ -10,7 +10,7 @@ import { ViewPollComponent } from './homepage/view-poll/view-poll.component';
 import { TakePollComponent } from './homepage/take-poll/take-poll.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'homepage', redirectTo: 'homepage/create', pathMatch: 'full'},
@@ -20,13 +20,12 @@ const routes: Routes = [
     { path: 'takepoll', component: TakePollComponent},
   ]}
 ];
-
 @NgModule({
   exports: [
     RouterModule,
   ],
   imports: [
-   RouterModule.forRoot(routes),
+   RouterModule.forRoot(routes, { useHash: true }),
   ]
 })
 
