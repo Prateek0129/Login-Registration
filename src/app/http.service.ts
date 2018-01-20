@@ -55,7 +55,7 @@ export class HttpService {
   }
 
   currentUser() {
-    if (localStorage.getItem('currentUser') != "null" && localStorage.getItem('currentUser') != "null") {
+    if (localStorage.getItem('currentUser') != "null" && localStorage.getItem('currentUser') != null) {
       return true;
     } else {
       return false;

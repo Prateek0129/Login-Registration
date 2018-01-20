@@ -11,11 +11,9 @@ export class RouteAuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (!this.httpService.currentUser()) {
       this.router.navigate(['/login']);
-      console.log("true");
       return false;
 
     } else {
-      console.log("true");
       return true;
     }
   }
