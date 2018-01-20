@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 import { AppComponent } from './app.component';
@@ -42,6 +43,7 @@ import { SideMenuComponent } from './homepage/side-menu/side-menu.component';
     RegisterService,
     HttpService,
     RouteAuthGuard,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
