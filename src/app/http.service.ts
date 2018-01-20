@@ -63,7 +63,8 @@ export class HttpService {
   }
   logout() {
     localStorage.setItem('currentUser', null);
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
+
   }
   createPoll(data) {
     return new Promise((resolve, reject) => {

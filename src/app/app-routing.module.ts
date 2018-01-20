@@ -10,7 +10,9 @@ import { ViewPollComponent } from './homepage/view-poll/view-poll.component';
 import { TakePollComponent } from './homepage/take-poll/take-poll.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: '', redirectTo: 'homepage/create', pathMatch: 'full', canActivate: [RouteAuthGuard]},
+  // { path: '', redirectTo: '/login', pathMatch: 'full'},
+  // { path: 'login', canActivate: [RouteAuthGuard], redirectTo:'homepage/create'},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'homepage', redirectTo: 'homepage/create', pathMatch: 'full'},
