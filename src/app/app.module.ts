@@ -19,6 +19,7 @@ import { TakePollComponent } from './homepage/take-poll/take-poll.component';
 import { ViewPollComponent } from './homepage/view-poll/view-poll.component';
 import { HeaderComponent } from './homepage/header/header.component';
 import { SideMenuComponent } from './homepage/side-menu/side-menu.component';
+import { PaginationService } from './pagination.service';
 @NgModule({
 
   imports: [
@@ -43,7 +44,8 @@ import { SideMenuComponent } from './homepage/side-menu/side-menu.component';
     RegisterService,
     HttpService,
     RouteAuthGuard,
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    PaginationService,
   ],
   bootstrap: [AppComponent]
 })
