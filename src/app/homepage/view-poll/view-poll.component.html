@@ -1,18 +1,44 @@
 <div *ngIf=spin class="loader"></div>
 <div class="viewContent">
-    <div *ngFor="let poll of polls">
+    <div *ngFor="let poll of pagedItems; let i = index" class="block">
         <div class="title">
-            {{poll.title}}
+            <strong>{{i+1}}.</strong> {{poll.title}}
         </div>
-        <div *ngFor="let option of poll.options; let i = index" class="result">
-            <div class="option{{i}}">
+        <div *ngFor="let option of poll.options; let j = index" class="result">
+            <div class="option{{j}}">
                 <div class="optionValue">
-                   <strong>{{i+1}}.</strong> {{option.option}}
+                    <strong>{{j+1}}.</strong> {{option.option}}
                 </div>
-                <div class="vote">
-                    {{option.vote}}
+                <div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success" role="progressbar" [attr.aria-valuenow]=option.vote aria-valuemin="0" aria-valuemax="100"
+                            [style.width.%]=option.vote>
+                        </div>
+                        <div class="vote">
+                            {{option.vote}} votes
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="pagination--align">
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(1)">First</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+            </li>
+            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                <a (click)="setPage(page)">{{page}}</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.currentPage + 1)">Next</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.totalPages)">Last</a>
+            </li>
+        </ul>
     </div>
 </div>

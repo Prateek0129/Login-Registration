@@ -15,44 +15,53 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+  .block {
+    margin-bottom: 5%;
+  }
   .viewContent {
     width: 95%;
     margin: 0 auto;
   }
   .title  {
     font-size: 150%;
-    background: rgba(80,80,80,0.2);
-    text-align: center;
     text-transform: capitalize;
     padding: 5px 0;
   }
   .result {
-    display: inline-block;
-    width: 25%;
     font-size: 120%;
     margin: 1px 0 1% 0;
   }
   .optionValue {
-    display: inline-block;
     text-transform: capitalize;
   }
   .option0 {
-    padding: 3%;
+    padding: 1%;
     background: rgba(255,0,0,0.2);
   }
   .option1 {
-    padding: 3%;
+    padding: 1%;
     background: rgba(0,255,0,0.2); 
   }
   .option2 {
-    padding: 3%;
+    padding: 1%;
     background: rgba(0,0,255,0.2);
   }
   .option3 {
-    padding: 3%;
+    padding: 1%;
     background: rgba(255,255,0,0.2);
   }  
   .vote {
-  display: inline-block;
-  float: right;
+    text-align: center;
+    z-index: 1;
+    position: relative;
+  }
+  .progress {
+    position: relative;
+  }
+  .progress-bar {
+    position: absolute;
+    z-index: 0;
+  }
+  .pagination--align {
+    text-align: center;
   }
