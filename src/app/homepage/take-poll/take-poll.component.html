@@ -1,3 +1,140 @@
-<p>
-  take-poll works!
-</p>
+<div *ngIf=spin class="loader"></div>
+<div class="viewContent">
+
+
+
+
+
+
+
+
+
+
+
+
+    <div *ngFor="let poll of pagedItems; let i = index" class="block">
+        <div class="title">
+            <strong>{{i+1}}.</strong> {{poll.title}}
+        </div>
+        <form #takePoll="ngForm" (ngSubmit)="submitPoll(takePoll)">
+            <div class="options-box">
+                <div *ngFor="let option of poll.options; let j = index" class="result">
+                    <div class=" option option{{j}}">
+                        <label for="option{{j}}">{{option.option}}</label>
+                        <input type="radio" name="{{poll._id}}" value="{{option.option}}" id="option{{j}}" required ngModel [disabled]="(id== poll._id)">
+                    </div>
+                </div>
+                <div *ngIf="!(id == poll._id)">
+                    <button [disabled]="!takePoll.valid" class="btn btn-danger btn-sm btn-alter" [ngClass]="{'color': takePoll.valid }">Submit</button>
+                    <div *ngIf="submitSpin && takePoll.valid"  class="submit--loader"></div>
+                </div>
+                <div *ngIf="(id== poll._id)" class="alert alert-success alert--override">
+                    {{message}}
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Pager -->
+    <div class="pagination--align">
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(1)">First</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+            </li>
+            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                <a (click)="setPage(page)">{{page}}</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.currentPage + 1)">Next</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.totalPages)">Last</a>
+            </li>
+        </ul>
+    </div>
+</div>
