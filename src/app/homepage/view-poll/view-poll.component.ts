@@ -22,6 +22,7 @@ export class ViewPollComponent implements OnInit {
     this.httpService.viewPolls().then((data) => {
       this.spin = false;
       this.allItems = data;
+      this.allItems = _.reverse(this.allItems);
       this.setPage(1);
     });
   }
