@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpParams, HttpClient } from '@angular/common/http';
+import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
 import { promise } from 'selenium-webdriver';
 import { HttpErrorResponse } from '@angular/common/http/src/response';
 import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
+import { Http, Headers } from '@angular/http';
+
+import * as _ from 'lodash';
 
 @Injectable()
 export class HttpService {
   options: string;
+  key: string;
   constructor(private http: HttpClient, public router: Router) { }
   onLogin(post) {
 
@@ -66,6 +70,7 @@ export class HttpService {
     this.router.navigate(['/login']);
 
   }
+
   createPoll(data) {
     return new Promise((resolve, reject) => {
       this.options = data.option1 + "____" + data.option2 + "____" + data.option3 + "____" + data.option4;
@@ -73,8 +78,8 @@ export class HttpService {
         params: new HttpParams().set('title', data.title).set('options', this.options)
       })
         .subscribe((data) => {
-          if(!data['error'])
-          resolve(true);
+          if (!data['error'])
+            resolve(true);
         });
     })
   }
@@ -83,7 +88,24 @@ export class HttpService {
     return new Promise((resolve, reject) => {
       this.http.get(environment['apiBase'] + '/list_polls').subscribe((data) => {
         resolve(data['data']);
-    });
-  })
+      });
+    })
+  }
+  getToken(){
+    return localStorage.getItem('currentUser');
+   }
+  submitPoll(data) {
+    return new Promise((resolve,reject) => {
+      this.key = _.keys(data)[0];
+      const headers = new HttpHeaders().set('access_token', this.getToken());
+      const params = new HttpParams().set('id', this.key).set('option_text', data[this.key]);
+      this.http.get(environment['apiBase'] + '/do_vote', {
+        headers,
+        params
+      })
+        .subscribe((data) => {
+          if (!data['error']) resolve(this.key);
+        });
+    })
   }
 }

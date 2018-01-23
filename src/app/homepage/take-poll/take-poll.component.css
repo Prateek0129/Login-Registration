@@ -1,0 +1,81 @@
+.loader {
+    border: 10px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 10px solid;
+    width: 130px;
+    height: 130px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 23%;
+    right: 42%;
+  }
+  .submit--loader {
+    border: 7px solid white;
+    border-radius: 50%;
+    border-top: 7px solid;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 68%;
+    left:15%;
+
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .viewContent {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .title  {
+    font-size: 150%;
+    text-transform: capitalize;
+  }
+  .result {
+    font-size: 120%;
+    margin: 1px 0 1% 0;
+    display: inline-block;
+    width: 49%;
+    text-transform: capitalize;
+  }
+  .options-box {
+    margin-top: 1%;
+  }
+  .optionValue {
+    text-transform: capitalize;
+  }
+  .block {
+    margin-bottom: 2%;
+    background: rgba(80,80,80,0.1);
+    padding: 2% 4%;
+    border-radius: 17px;
+    position: relative;
+  }
+  .btn-alter {
+    font-size: 130%;
+}
+.color {
+  background-color: #5cb85c;
+  border-color: #4cae4c; 
+}
+.color:active {
+  background-color: #5cb85c;
+  border-color: #4cae4c; 
+}
+  .option {
+    width: 35%;
+  }
+  .alert--override {
+    padding: 10px;
+    font-size: 150%;
+    text-align: center;
+  }
+  input {
+    float: left;
+    margin-top: 6px;
+    margin-right: 6px;
+  }
