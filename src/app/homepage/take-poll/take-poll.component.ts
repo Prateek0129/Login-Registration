@@ -18,7 +18,7 @@ export class TakePollComponent implements OnInit {
   pagedItems: any[];
   spin: boolean;
   message: string;
-  id: any;
+  id: Array<string> = [""];
   submitSpin:boolean;
   ngOnInit() {
     this.spin = true;
@@ -43,10 +43,18 @@ export class TakePollComponent implements OnInit {
   }
   submitPoll(option) {
     this.submitSpin = true;
-    this.httpService.submitPoll(option.value).then((data) => {
+    this.httpService.submitPoll(option.value).then((data:string) => {
       this.submitSpin = false;
-      this.id = data;
+       this.id.push(data);
+      console.log(this.id);
       this.message = "Your Poll Has Been Successfully Submitted";
     })
+  }
+  isAdded(id) {
+    if((_.indexOf(this.id,id))>-1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
