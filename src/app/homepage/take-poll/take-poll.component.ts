@@ -17,8 +17,8 @@ export class TakePollComponent implements OnInit {
   pager: any = {};
   pagedItems: any[];
   spin: boolean;
-  message: string;
-  id: Array<string> = [""];
+  message: string = "Your Poll Has Been Successfully Submitted";
+  id: Array<string> = [];
   submitSpin:boolean;
   ngOnInit() {
     this.spin = true;
@@ -27,6 +27,8 @@ export class TakePollComponent implements OnInit {
       this.allItems = data;
       this.allItems = _.reverse(this.allItems);
       this.setPage(1);
+      this.id=JSON.parse(localStorage.getItem("voted"));
+      console.log(this.id);
     });
   }
 
@@ -46,8 +48,8 @@ export class TakePollComponent implements OnInit {
     this.httpService.submitPoll(option.value).then((data:string) => {
       this.submitSpin = false;
        this.id.push(data);
+       localStorage.setItem("voted", JSON.stringify(this.id));
       console.log(this.id);
-      this.message = "Your Poll Has Been Successfully Submitted";
     })
   }
   isAdded(id) {

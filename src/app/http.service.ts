@@ -12,7 +12,6 @@ import * as _ from 'lodash';
 export class HttpService {
   options: string;
   key: string;
-  token: string;
   constructor(private http: HttpClient, public router: Router) { }
   onLogin(post) {
 
@@ -24,7 +23,6 @@ export class HttpService {
         (data) => {
           if (!data['error']) {
             resolve(data['token']);
-            this.token = data['token'];
             localStorage.setItem('currentUser', data['token']);
           } else {
             reject(data['data']);
@@ -70,7 +68,6 @@ export class HttpService {
   logout() {
     localStorage.setItem('currentUser', null);
     this.router.navigate(['/login']);
-    this.token = '';
 
   }
 
@@ -94,11 +91,13 @@ export class HttpService {
       });
     })
   }
-
+  getToken(){
+    return localStorage.getItem('currentUser');
+   }
   submitPoll(data) {
     return new Promise((resolve,reject) => {
       this.key = _.keys(data)[0];
-      const headers = new HttpHeaders().set('access_token', this.token);
+      const headers = new HttpHeaders().set('access_token', this.getToken());
       const params = new HttpParams().set('id', this.key).set('option_text', data[this.key]);
       this.http.get(environment['apiBase'] + '/do_vote', {
         headers,
