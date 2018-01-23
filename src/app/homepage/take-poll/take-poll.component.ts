@@ -27,8 +27,9 @@ export class TakePollComponent implements OnInit {
       this.allItems = data;
       this.allItems = _.reverse(this.allItems);
       this.setPage(1);
-      this.id=JSON.parse(localStorage.getItem("voted"));
-      console.log(this.id);
+      if(_.some(JSON.parse(localStorage.getItem("voted")))) {
+        this.id=JSON.parse(localStorage.getItem("voted"));
+      }
     });
   }
 
