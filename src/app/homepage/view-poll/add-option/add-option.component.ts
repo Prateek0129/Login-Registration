@@ -11,7 +11,6 @@ export class AddOptionComponent implements OnInit {
 showForm:boolean = false;
 submitSpin:boolean;
 errorMessage:string;
-successMessage:string;
 constructor(public httpService: HttpService) { }
 
   ngOnInit() {
@@ -26,11 +25,7 @@ constructor(public httpService: HttpService) { }
     this.submitSpin = true;
     this.httpService.addOption(newOption.value).then((data) => {
       this.submitSpin = false;
-      this.successMessage = "Option  Submitted";
-      setTimeout(() => {
       this.showForm = false;
-      this.successMessage = "";
-      }, 2000);
     }).catch((error)=> {
       this.submitSpin = false;
       this.errorMessage = error;
