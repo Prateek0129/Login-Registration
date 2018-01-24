@@ -20,6 +20,7 @@ import { ViewPollComponent } from './homepage/view-poll/view-poll.component';
 import { HeaderComponent } from './homepage/header/header.component';
 import { SideMenuComponent } from './homepage/side-menu/side-menu.component';
 import { PaginationService } from './pagination.service';
+import { AddOptionComponent } from './homepage/view-poll/add-option/add-option.component';
 @NgModule({
 
   imports: [
@@ -39,6 +40,7 @@ import { PaginationService } from './pagination.service';
     ViewPollComponent,
     HeaderComponent,
     SideMenuComponent,
+    AddOptionComponent,
   ],
   providers: [
     LoginService,

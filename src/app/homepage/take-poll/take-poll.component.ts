@@ -19,6 +19,7 @@ export class TakePollComponent implements OnInit {
   spin: boolean;
   message: string = "Your Poll Has Been Successfully Submitted";
   id: Array<string> = [];
+  clickedId:number;
   submitSpin:boolean;
   ngOnInit() {
     this.spin = true;
@@ -46,11 +47,11 @@ export class TakePollComponent implements OnInit {
   }
   submitPoll(option) {
     this.submitSpin = true;
+    this.clickedId = _.keys(option.value)[0];
     this.httpService.submitPoll(option.value).then((data:string) => {
       this.submitSpin = false;
        this.id.push(data);
        localStorage.setItem("voted", JSON.stringify(this.id));
-      console.log(this.id);
     })
   }
   isAdded(id) {

@@ -17,6 +17,7 @@
   }
   .block {
     margin-bottom: 5%;
+    position: relative;
   }
   .viewContent {
     width: 95%;

@@ -12,9 +12,9 @@
                         <input type="radio" name="{{poll._id}}" value="{{option.option}}" [attr.disabled]="isAdded(poll._id) ? true:null" id="option{{j}}" required ngModel>
                     </div>
                 </div>
-                <div *ngIf="!isAdded(poll._id)">
+                <div *ngIf="!isAdded(poll._id)" class="submit--button">
                     <button [disabled]="!takePoll.valid" class="btn btn-danger btn-sm btn-alter" [ngClass]="{'color': takePoll.valid }">Submit</button>
-                    <div *ngIf="submitSpin && takePoll.valid" class="submit--loader"></div>
+                    <div *ngIf="submitSpin && (poll._id==clickedId)" class="submit--loader"></div>
                 </div>
                 <div *ngIf="isAdded(poll._id)" class="alert alert-success alert--override">
                     {{message}}
