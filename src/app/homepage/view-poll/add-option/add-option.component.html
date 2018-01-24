@@ -1,0 +1,18 @@
+<div class="addOption">
+  <input type="button" value="Add Option" (click)="showFormFunc()" class="btn btn-primary btn-sm btn-alter">
+  <div *ngIf=showForm class="form--add">
+    <form #newOption="ngForm" id="addNewOption" (ngSubmit)="addOption(newOption)">
+      <label for="new"> Add New Option:</label>
+      <div>
+        <input type="text" ngModel name={{pollId}} id="new" required class="addOption--input">
+      </div>
+      <div *ngIf=errorMessage class="alert alert-danger alert--override">{{errorMessage}}</div>
+      <div *ngIf=successMessage class="alert alert-success alert--override">{{successMessage}}</div>
+      <div>
+        <input type="submit" form="addNewOption" class="btn btn-danger btn-block btn-xs btn-alter--submit" [ngClass]="{'color': newOption.valid }"
+          [disabled]="!newOption.valid">
+      </div>
+      <div *ngIf=submitSpin class="submit--loader"></div>
+    </form>
+  </div>
+</div>

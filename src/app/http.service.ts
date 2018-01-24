@@ -12,6 +12,9 @@ import * as _ from 'lodash';
 export class HttpService {
   options: string;
   key: string;
+  newOptionKey: string;
+  allVotes:any[];
+  newLocalOption:any;
   constructor(private http: HttpClient, public router: Router) { }
   onLogin(post) {
 
@@ -87,13 +90,16 @@ export class HttpService {
   viewPolls() {
     return new Promise((resolve, reject) => {
       this.http.get(environment['apiBase'] + '/list_polls').subscribe((data) => {
+        this.allVotes = data['data'];
         resolve(data['data']);
       });
     })
   }
+
   getToken(){
     return localStorage.getItem('currentUser');
    }
+
   submitPoll(data) {
     return new Promise((resolve,reject) => {
       this.key = _.keys(data)[0];
@@ -106,6 +112,25 @@ export class HttpService {
         .subscribe((data) => {
           if (!data['error']) resolve(this.key);
         });
+    })
+  }
+
+  addOption(option) {
+    return new Promise((resolve,reject) => {  
+      this.newOptionKey = _.keys(option)[0];
+      const params = new HttpParams().set('id',this.newOptionKey).set('option_text',option[this.newOptionKey]);
+      this.http.get(environment['apiBase'] + '/add_new_option', {
+        params
+      })
+      .subscribe((data) => {
+        if(!data['error']){
+          resolve(true);
+          this.newLocalOption = {'option':option[this.newOptionKey],'vote':0};
+          this.allVotes[_.findIndex(this.allVotes,{'_id':this.newOptionKey})]['options'].push(this.newLocalOption);
+        } else {
+          reject(data['data'])
+        }
+      })
     })
   }
 }

@@ -1,0 +1,53 @@
+.btn-alter {
+    font-size: 130%;
+}
+.addOption {
+  position: relative;
+}
+.submit--loader {
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid;
+  width: 27px;
+  height: 27px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 74%;
+  left: 55%;
+  }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.alert--override {
+  font-size: 150%;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding: 0px;
+}
+.addOption--input {
+  width: 100%;
+}
+.form--add {
+  width: 20%;
+  margin: 0 auto;
+  background: rgba(80,80,80,0.1);
+  padding: 10px;
+}
+.btn-alter {
+    font-size: 130%;
+}
+.btn-alter--submit {
+  font-size: 130%;
+  margin-top: 5%;
+}
+.color {
+  background-color: #5cb85c;
+  border-color: #4cae4c; 
+}
+.color:active {
+  background-color: #5cb85c;
+  border-color: #4cae4c; 
+}
