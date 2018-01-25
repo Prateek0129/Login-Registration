@@ -10,10 +10,9 @@ export class RouteAuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (!this.httpService.currentUser()) {
-      this.router.navigate(['/homepage/create']);
+      this.router.navigate(['/login']);
       return false;
     } else {
-      this.router.navigate(['/homepage/create']);
       return true;
     }
   }
