@@ -35,8 +35,13 @@
   .optionValue {
     text-transform: capitalize;
   }
-  .option0 {
+  .option {
     padding: 1%;
+    width: 90%;
+    display: inline-block;
+  }
+  .option0 {
+
     background: rgba(255,0,0,0.2);
   }
   .option1 {

@@ -21,6 +21,7 @@ import { HeaderComponent } from './homepage/header/header.component';
 import { SideMenuComponent } from './homepage/side-menu/side-menu.component';
 import { PaginationService } from './pagination.service';
 import { AddOptionComponent } from './homepage/view-poll/add-option/add-option.component';
+import { DeleteOptionComponent } from './homepage/view-poll/delete-option/delete-option.component';
 @NgModule({
 
   imports: [
@@ -41,6 +42,7 @@ import { AddOptionComponent } from './homepage/view-poll/add-option/add-option.c
     HeaderComponent,
     SideMenuComponent,
     AddOptionComponent,
+    DeleteOptionComponent,
   ],
   providers: [
     LoginService,
