@@ -16,8 +16,11 @@ export class CreateComponent implements OnInit {
 
   ngOnInit() {
     this.createPollForm();
+    localStorage.setItem('currentPage','create');
   }
-
+  ngOnDestroy() {
+    localStorage.removeItem('currentPage');
+  }
   private createPollForm() {
     this.createPollFormview = new FormGroup({
       title: new FormControl('', Validators.required),
