@@ -18,11 +18,6 @@ export class AppComponent {
     }
     else if(!!this.httpService.currentUser()) {
       this.router.navigate(['homepage/create']);
-    // }
-    // if(!!this.httpService.currentUser) {
-    // this.currentPage = localStorage.getItem('currentPage');
-    // console.log(this.currentPage,typeof(this.currentPage));
-    //   this.router.navigate(['homepage/create'])
-    // }
+    }
   }
 }
