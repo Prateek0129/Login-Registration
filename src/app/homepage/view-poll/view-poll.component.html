@@ -2,10 +2,10 @@
 <div class="viewContent">
     <div *ngFor="let poll of pagedItems; let i = index" class="block">
         <div class="title">
-            <strong>{{i+1}}.</strong> {{poll.title}}
+            <strong>{{i+1}}.</strong><span *ngIf=!update> {{poll.title}}</span>
         </div>
         <div *ngIf="!update" class="update--button">
-            <input type="button" (click)="doUpdate(poll._id)" value="Update" class="btn btn-primary">
+            <input type="button" (click)="doUpdate(poll._id)" value="edit" class="btn btn-primary">
         </div>
         <div *ngIf="update && updatePollId==poll._id" class="update--form">
             <form #update="ngForm" id="title" (ngSubmit)="onUpdate(update)">
