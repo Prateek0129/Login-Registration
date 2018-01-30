@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  currentPage;
   constructor(public httpService: HttpService, public router: Router) {
   //   if(!!this.httpService.currentUser() && (localStorage.getItem('currentPage'))=="takepoll") {
   //     this.router.navigate(['homepage/takepoll']);

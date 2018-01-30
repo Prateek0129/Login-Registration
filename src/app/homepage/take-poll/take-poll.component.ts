@@ -22,7 +22,6 @@ export class TakePollComponent implements OnInit {
   clickedId: number;
   submitSpin: boolean;
   ngOnInit() {
-    localStorage.setItem('currentPage', 'takepoll');
     this.spin = true;
     this.httpService.viewPolls().then((data) => {
       this.spin = false;
@@ -33,9 +32,6 @@ export class TakePollComponent implements OnInit {
         this.id = JSON.parse(localStorage.getItem("voted"));
       }
     });
-  }
-  ngOnDestroy() {
-    localStorage.removeItem('currentPage');
   }
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {

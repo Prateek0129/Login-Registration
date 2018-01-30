@@ -18,7 +18,6 @@ export class ViewPollComponent implements OnInit {
   pagedItems: any[];
   spin: boolean;
   ngOnInit() {
-    localStorage.setItem('currentPage','viewpoll');
     this.spin = true;
     this.httpService.viewPolls().then((data) => {
       this.spin = false;
@@ -26,9 +25,6 @@ export class ViewPollComponent implements OnInit {
       this.allItems = _.reverse(this.allItems);
       this.setPage(1);
     });
-  }
-  ngOnDestroy() {
-    localStorage.removeItem('currentPage');
   }
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
