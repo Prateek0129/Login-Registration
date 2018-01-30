@@ -17,7 +17,6 @@ export class CreateComponent implements OnInit {
   ngOnInit() {
     this.createPollForm();
   }
-
   private createPollForm() {
     this.createPollFormview = new FormGroup({
       title: new FormControl('', Validators.required),

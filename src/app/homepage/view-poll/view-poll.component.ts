@@ -26,7 +26,6 @@ export class ViewPollComponent implements OnInit {
       this.setPage(1);
     });
   }
-
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
         return;

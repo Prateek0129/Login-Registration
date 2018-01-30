@@ -19,8 +19,8 @@ export class TakePollComponent implements OnInit {
   spin: boolean;
   message: string = "Your Poll Has Been Successfully Submitted";
   id: Array<string> = [];
-  clickedId:number;
-  submitSpin:boolean;
+  clickedId: number;
+  submitSpin: boolean;
   ngOnInit() {
     this.spin = true;
     this.httpService.viewPolls().then((data) => {
@@ -28,12 +28,11 @@ export class TakePollComponent implements OnInit {
       this.allItems = data;
       this.allItems = _.reverse(this.allItems);
       this.setPage(1);
-      if(_.some(JSON.parse(localStorage.getItem("voted")))) {
-        this.id=JSON.parse(localStorage.getItem("voted"));
+      if (_.some(JSON.parse(localStorage.getItem("voted")))) {
+        this.id = JSON.parse(localStorage.getItem("voted"));
       }
     });
   }
-
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
       return;
@@ -48,17 +47,26 @@ export class TakePollComponent implements OnInit {
   submitPoll(option) {
     this.submitSpin = true;
     this.clickedId = _.keys(option.value)[0];
-    this.httpService.submitPoll(option.value).then((data:string) => {
+    this.httpService.submitPoll(option.value).then((data: string) => {
       this.submitSpin = false;
-       this.id.push(data);
-       localStorage.setItem("voted", JSON.stringify(this.id));
+      this.id.push(data);
+      localStorage.setItem("voted", JSON.stringify(this.id));
     })
   }
   isAdded(id) {
-    if((_.indexOf(this.id,id))>-1) {
+    if ((_.indexOf(this.id, id)) > -1) {
       return true;
     } else {
       return false;
+    }
+  }
+  isEmpty(options) {
+    if (options != undefined) {
+      if(options.length==0) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 }
