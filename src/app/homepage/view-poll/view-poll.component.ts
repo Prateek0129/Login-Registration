@@ -17,6 +17,10 @@ export class ViewPollComponent implements OnInit {
   pager:any = {};
   pagedItems: any[];
   spin: boolean;
+  update:boolean = false;
+  updatePollId;
+  errorMessage;
+  updateSpin:boolean;
   ngOnInit() {
     this.spin = true;
     this.httpService.viewPolls().then((data) => {
@@ -37,4 +41,18 @@ export class ViewPollComponent implements OnInit {
     // get current page of items
     this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
 }
+  onUpdate(title) {
+    this.updateSpin = true;
+    this.httpService.onUpdate(this.updatePollId,title.value['update']).then((data)=> {
+    this.updateSpin = false;
+    this.update = false;
+    }).catch((data)=>{
+      this.errorMessage = data;
+      this.update = false;
+    });
+  }
+  doUpdate(id) {
+    this.update = true;
+    this.updatePollId = id;
+  }
 }
