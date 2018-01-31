@@ -5,7 +5,7 @@
             <strong>{{i+1}}.</strong><span *ngIf="updatePollId!=poll._id"> {{poll.title}}</span>
         </div>
         <div *ngIf="updatePollId!=poll._id" class="update--button">
-            <input type="button" (click)="doUpdate(poll._id)" value="edit" class="btn btn-primary">
+            <input type="button" (click)="doUpdate(poll._id)" value="Edit" class="btn btn-primary">
         </div>
         <div *ngIf="updatePollId==poll._id" class="update--form">
             <form #update="ngForm" id="title" (ngSubmit)="onUpdate(update)">
@@ -17,6 +17,10 @@
                 <input type="submit" form="title" class="btn btn-primary" [disabled]="update.invalid">
                 <div *ngIf=updateSpin class="update--title--loader"></div>
             </div>
+        </div>
+        <div class="delete--button">
+            <input type="button" (click)="onDelete(poll._id)" value="Delete" class="btn btn-primary">
+            <div *ngIf="deleteSpin && deleteId==poll._id" class="delete--poll--loader"></div>
         </div>
         <div *ngFor="let option of poll.options; let j = index" class="result">
             <div class="option option{{j%4}}">

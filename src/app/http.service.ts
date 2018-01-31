@@ -166,4 +166,20 @@ export class HttpService {
       })
     })
   }
+
+  onDelete(id) {
+    return new Promise((resolve,reject)=> {
+      const params =  new HttpParams().set('id',id);
+      this.http.get(environment['apiBase'] + '/delete_poll',{
+        params
+      }).subscribe((data)=> {
+        if(!data['error']){
+          resolve(true); 
+        } else {
+          reject(data['data'])
+        }
+      })
+    })
+  }
+
 }
