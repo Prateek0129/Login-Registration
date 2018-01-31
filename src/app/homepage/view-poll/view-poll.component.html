@@ -7,7 +7,7 @@
         <div *ngIf="updatePollId!=poll._id" class="update--button">
             <input type="button" (click)="doUpdate(poll._id)" value="edit" class="btn btn-primary">
         </div>
-        <div *ngIf="update && updatePollId==poll._id" class="update--form">
+        <div *ngIf="updatePollId==poll._id" class="update--form">
             <form #update="ngForm" id="title" (ngSubmit)="onUpdate(update)">
                 <div class="update--text">
                     <input type="text" name="update" [(ngModel)]=poll.title required>
