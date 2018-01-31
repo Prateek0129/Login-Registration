@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div *ngIf="!isAdded(poll._id) && !isEmpty(poll.options)" class="submit--button">
-                    <button [disabled]="!takePoll.valid" class="btn btn-danger btn-sm btn-alter" [ngClass]="{'color': takePoll.valid }">Submit</button>
+                    <button [disabled]="!takePoll.valid || submitSpin" class="btn btn-danger btn-sm btn-alter" [ngClass]="{'color': takePoll.valid }">Submit</button>
                     <div *ngIf="submitSpin && (poll._id==clickedId)" class="submit--loader"></div>
                 </div>
                 <div *ngIf="isAdded(poll._id)" class="alert alert-success alert--override">
