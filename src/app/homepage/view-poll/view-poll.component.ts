@@ -17,7 +17,6 @@ export class ViewPollComponent implements OnInit {
   pager:any = {};
   pagedItems: any[];
   spin: boolean;
-  update:boolean = false;
   updatePollId;
   errorMessage;
   updateSpin:boolean;
@@ -45,14 +44,12 @@ export class ViewPollComponent implements OnInit {
     this.updateSpin = true;
     this.httpService.onUpdate(this.updatePollId,title.value['update']).then((data)=> {
     this.updateSpin = false;
-    this.update = false;
+    this.updatePollId = "";
     }).catch((data)=>{
       this.errorMessage = data;
-      this.update = false;
     });
   }
   doUpdate(id) {
-    this.update = true;
     this.updatePollId = id;
   }
 }
