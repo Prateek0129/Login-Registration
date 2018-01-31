@@ -2,7 +2,21 @@
 <div class="viewContent">
     <div *ngFor="let poll of pagedItems; let i = index" class="block">
         <div class="title">
-            <strong>{{i+1}}.</strong> {{poll.title}}
+            <strong>{{i+1}}.</strong><span *ngIf="updatePollId!=poll._id"> {{poll.title}}</span>
+        </div>
+        <div *ngIf="updatePollId!=poll._id" class="update--button">
+            <input type="button" (click)="doUpdate(poll._id)" value="edit" class="btn btn-primary">
+        </div>
+        <div *ngIf="updatePollId==poll._id" class="update--form">
+            <form #update="ngForm" id="title" (ngSubmit)="onUpdate(update)">
+                <div class="update--text">
+                    <input type="text" name="update" [(ngModel)]=poll.title required>
+                </div>
+            </form>
+            <div class="update--submit">
+                <input type="submit" form="title" class="btn btn-primary" [disabled]="update.invalid">
+                <div *ngIf=updateSpin class="update--title--loader"></div>
+            </div>
         </div>
         <div *ngFor="let option of poll.options; let j = index" class="result">
             <div class="option option{{j%4}}">
@@ -20,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <app-delete-option [pollId]=(poll._id) [pollText]=(option.option)  [pollVote]=(option.vote)></app-delete-option>
+            <app-delete-option [pollId]=(poll._id) [pollText]=(option.option) [pollVote]=(option.vote)></app-delete-option>
         </div>
         <app-add-option [pollId]=(poll._id)></app-add-option>
     </div>

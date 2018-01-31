@@ -151,4 +151,19 @@ export class HttpService {
       })
   })
   }
+
+  onUpdate(id,title) {
+    return new Promise((resolve,reject)=> {
+      const params =  new HttpParams().set('id',id).set('title',title);
+      this.http.get(environment['apiBase'] + '/update_poll_title',{
+        params
+      }).subscribe((data)=> {
+        if(!data['error']){
+          resolve(true); 
+        } else {
+          reject(data['data'])
+        }
+      })
+    })
+  }
 }
