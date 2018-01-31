@@ -12,14 +12,14 @@ import { PaginationService } from '../../pagination.service';
 })
 export class ViewPollComponent implements OnInit {
 
-  constructor(public httpService: HttpService, public paginationService:PaginationService) { }
+  constructor(public httpService: HttpService, public paginationService: PaginationService) { }
   allItems: any;
-  pager:any = {};
+  pager: any = {};
   pagedItems: any[];
   spin: boolean;
   updatePollId;
   errorMessage;
-  updateSpin:boolean;
+  updateSpin: boolean;
   ngOnInit() {
     this.spin = true;
     this.httpService.viewPolls().then((data) => {
@@ -31,7 +31,7 @@ export class ViewPollComponent implements OnInit {
   }
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
-        return;
+      return;
     }
 
     // get pager object from service
@@ -39,16 +39,18 @@ export class ViewPollComponent implements OnInit {
 
     // get current page of items
     this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
-}
+  }
+
   onUpdate(title) {
     this.updateSpin = true;
-    this.httpService.onUpdate(this.updatePollId,title.value['update']).then((data)=> {
-    this.updateSpin = false;
-    this.updatePollId = "";
-    }).catch((data)=>{
+    this.httpService.onUpdate(this.updatePollId, title.value['update']).then((data) => {
+      this.updateSpin = false;
+      this.updatePollId = "";
+    }).catch((data) => {
       this.errorMessage = data;
     });
   }
+  
   doUpdate(id) {
     this.updatePollId = id;
   }
