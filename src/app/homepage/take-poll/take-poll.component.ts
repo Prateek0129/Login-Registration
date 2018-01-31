@@ -21,11 +21,13 @@ export class TakePollComponent implements OnInit {
   id: Array<string> = [];
   clickedId: number;
   submitSpin: boolean;
+  count:number = 1;
   ngOnInit() {
     this.spin = true;
     this.httpService.viewPolls().then((data) => {
       this.spin = false;
       this.allItems = data;
+      this.count = this.allItems.length;
       this.allItems = _.reverse(this.allItems);
       this.setPage(1);
       if (_.some(JSON.parse(localStorage.getItem("voted")))) {

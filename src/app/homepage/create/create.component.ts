@@ -12,6 +12,7 @@ export class CreateComponent implements OnInit {
   createPollFormview: FormGroup;
   spin:boolean;
   message:string = null;
+  submit:boolean;
   constructor(public httpService: HttpService) { }
 
   ngOnInit() {
@@ -21,20 +22,22 @@ export class CreateComponent implements OnInit {
     this.createPollFormview = new FormGroup({
       title: new FormControl('', Validators.required),
       option1: new FormControl('', Validators.required),
-      option2: new FormControl('', Validators.required),
-      option3: new FormControl('', Validators.required),
-      option4: new FormControl('', Validators.required),
+      option2: new FormControl(),
+      option3: new FormControl(),
+      option4: new FormControl(),
     });
   }
 
   createPoll(data) {
     this.spin = true;
+    this.submit = true;
     this.httpService.createPoll(data).then((noerror) => {
       if(noerror) {
       this.message = "Your Pole Has Been SuccessFully Submitted";
       this.spin = false;
       setTimeout(() => {
         this.message = null;
+        this.submit = false;
         this.createPollForm();
       }, 3000);
       }

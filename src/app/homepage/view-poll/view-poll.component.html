@@ -2,7 +2,8 @@
 <div class="viewContent">
     <div *ngFor="let poll of pagedItems; let i = index" class="block">
         <div class="title">
-            <strong>{{i+1}}.</strong><span *ngIf="updatePollId!=poll._id"> {{poll.title}}</span>
+            <strong>{{i+1}}.</strong>
+            <span *ngIf="updatePollId!=poll._id"> {{poll.title}}</span>
         </div>
         <div *ngIf="updatePollId!=poll._id" class="update--button">
             <input type="button" (click)="doUpdate(poll._id)" value="Edit" class="btn btn-primary">
@@ -42,7 +43,7 @@
         </div>
         <app-add-option [pollId]=(poll._id)></app-add-option>
     </div>
-    <div class="pagination--align">
+    <div *ngIf=count class="pagination--align">
         <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
             <li [ngClass]="{disabled:pager.currentPage === 1}">
                 <a (click)="setPage(1)">First</a>
@@ -61,4 +62,8 @@
             </li>
         </ul>
     </div>
-</div>
+    <div *ngIf=!count>
+        <div class="no--polls">
+            No Polls Available
+        </div>
+    </div>
