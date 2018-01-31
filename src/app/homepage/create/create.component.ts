@@ -21,10 +21,7 @@ export class CreateComponent implements OnInit {
   private createPollForm() {
     this.createPollFormview = new FormGroup({
       title: new FormControl('', Validators.required),
-      option1: new FormControl('', Validators.required),
-      option2: new FormControl(),
-      option3: new FormControl(),
-      option4: new FormControl(),
+      option: new FormControl('', Validators.required),
     });
   }
 
@@ -35,11 +32,11 @@ export class CreateComponent implements OnInit {
       if(noerror) {
       this.message = "Your Pole Has Been SuccessFully Submitted";
       this.spin = false;
+      this.createPollForm();
       setTimeout(() => {
         this.message = null;
         this.submit = false;
-        this.createPollForm();
-      }, 3000);
+      }, 1000);
       }
   })
 }
