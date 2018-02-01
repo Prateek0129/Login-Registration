@@ -77,8 +77,15 @@
     padding: 5px 0;
     padding-left: 20px;
   }
+  .delete--button {
+    display: inline-block;
+    padding: 5px 0;
+    padding-left: 10px;
+    position: relative;
+    width: 11%;
+  }
   .update--form {
-    width: 28%;
+    width: 29%;
     padding: 5px 0;
     display: inline-block;
     vertical-align: bottom;
@@ -89,6 +96,7 @@
   .update--submit {
     float: right;
     position: relative;
+    width: 35%;
   }
   .update--text input[type="text"] {
     padding: 5px;
@@ -104,9 +112,28 @@
     animation: spin 2s linear infinite;
     position: absolute;
     top: 14%;
-    left: 110%;
+    right: 0;
+    }
+  .delete--poll--loader {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid;
+    width: 27px;
+    height: 27px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 23%;
+    right: 1%;
     }
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+  .no--polls {
+    background: rgba(80,80,80,0.1);
+    padding: 3% 3% 4%;
+    font-size: 250%;
+    border-radius: 7px;
+    color: rgba(0,0,0,0.7);
   }

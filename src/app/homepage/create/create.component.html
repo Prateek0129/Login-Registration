@@ -5,36 +5,31 @@
         <label for="title">
           Enter The Poll Title:
         </label>
-        <input type="text" autocomplete="off" id="title" class="form-control bold" formControlName="title" name="title" placeholder="Poll"
-          required>
+        <input type="text" autocomplete="off" id="title" class="form-control bold" formControlName="title" name="title" placeholder="Poll">
       </div>
       <div class="options">
         <label for="option1">
           Option 1
-          <input type="text" autocomplete="off" id="option1" class="form-control" formControlName="option1" name="option1" placeholder="Option 1"
-            required>
+          <input type="text" autocomplete="off" id="option1" class="form-control" formControlName="option1" name="option1" placeholder="Option 1">
         </label>
         <label for="option2" class="labelAlign">
           Option 2
-          <input type="text" autocomplete="off" id="option2" class="form-control" formControlName="option2" name="option2" placeholder="Option 2"
-            required>
+          <input type="text" autocomplete="off" id="option2" class="form-control" formControlName="option2" name="option2" placeholder="Option 2">
         </label>
         <label for="option3">
           Option 3
-          <input type="text" autocomplete="off" id="option3" class="form-control" formControlName="option3" name="option3" placeholder="Option 3"
-            required>
+          <input type="text" autocomplete="off" id="option3" class="form-control" formControlName="option3" name="option3" placeholder="Option 3">
         </label>
         <label for="option4" class="labelAlign">
           Option 4
-          <input type="text" autocomplete="off" id="option" class="form-control" formControlName="option4" name="option4" placeholder="Option 4"
-            required>
+          <input type="text" autocomplete="off" id="option" class="form-control" formControlName="option4" name="option4" placeholder="Option 4">
         </label>
       </div>
       <div *ngIf=message class="alert alert-success alert-override success">
           {{message}}
         </div>
       <div class="submit">
-        <button type="submit" class="btn btn-danger btn-block btn-alter" [ngClass]="{'color': !createPollFormview.invalid }" [disabled]="createPollFormview.invalid">Submit</button>
+        <button type="submit" class="btn btn-danger btn-block btn-alter" [ngClass]="{'color': (createPollFormview.valid) }" [disabled]="createPollFormview.invalid || submit">Submit</button>
         <div *ngIf=spin class="loader"></div>
       </div>
     </div>

@@ -20,11 +20,15 @@ export class ViewPollComponent implements OnInit {
   updatePollId;
   errorMessage;
   updateSpin: boolean;
+  deleteSpin:boolean;
+  deleteId;
+  count:number = 1;
   ngOnInit() {
     this.spin = true;
     this.httpService.viewPolls().then((data) => {
       this.spin = false;
       this.allItems = data;
+      this.count = this.allItems.length;
       this.allItems = _.reverse(this.allItems);
       this.setPage(1);
     });
@@ -53,5 +57,18 @@ export class ViewPollComponent implements OnInit {
   
   doUpdate(id) {
     this.updatePollId = id;
+  }
+
+  onDelete(id) {
+    this.deleteId = id;
+    this.deleteSpin = true;
+    _.pullAt(this.allItems,_.findIndex(this.allItems,{'_id':id}));
+    this.pagedItems = this.allItems;
+    this.count = this.allItems.length;    
+    this.httpService.onDelete(id).then((data)=> {
+      this.deleteSpin = false;
+    }).catch((data) => {
+      this.errorMessage = data;
+    });
   }
 }

@@ -9,11 +9,12 @@
                 <div *ngFor="let option of poll.options; let j = index" class="result">
                     <div class=" option option{{j}}">
                         <label for="option{{j}}">{{option.option}}</label>
-                        <input type="radio" name="{{poll._id}}" value="{{option.option}}" [attr.disabled]="isAdded(poll._id) ? true:null" id="option{{j}}" required ngModel>
+                        <input type="radio" name="{{poll._id}}" value="{{option.option}}" [attr.disabled]="isAdded(poll._id) ? true:null" id="option{{j}}"
+                            required ngModel>
                     </div>
                 </div>
-                <div *ngIf="!isAdded(poll._id) && !isEmpty(poll.options)"  class="submit--button">
-                    <button [disabled]="!takePoll.valid" class="btn btn-danger btn-sm btn-alter" [ngClass]="{'color': takePoll.valid }">Submit</button>
+                <div *ngIf="!isAdded(poll._id) && !isEmpty(poll.options)" class="submit--button">
+                    <button [disabled]="!takePoll.valid || submitSpin" class="btn btn-danger btn-sm btn-alter" [ngClass]="{'color': takePoll.valid }">Submit</button>
                     <div *ngIf="submitSpin && (poll._id==clickedId)" class="submit--loader"></div>
                 </div>
                 <div *ngIf="isAdded(poll._id)" class="alert alert-success alert--override">
@@ -23,7 +24,7 @@
         </form>
     </div>
     <!-- Pager -->
-    <div class="pagination--align">
+    <div *ngIf=count class="pagination--align">
         <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
             <li [ngClass]="{disabled:pager.currentPage === 1}">
                 <a (click)="setPage(1)">First</a>
@@ -41,5 +42,10 @@
                 <a (click)="setPage(pager.totalPages)">Last</a>
             </li>
         </ul>
+    </div>
+    <div *ngIf=!count>
+        <div class="no--polls">
+            No Polls Available
+        </div>
     </div>
 </div>

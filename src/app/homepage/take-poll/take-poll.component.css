@@ -81,3 +81,10 @@
   .submit--button {
     position: relative;
   }
+  .no--polls {
+    background: rgba(80,80,80,0.1);
+    padding: 3% 3% 4%;
+    font-size: 250%;
+    border-radius: 7px;
+    color: rgba(0,0,0,0.7);
+  }

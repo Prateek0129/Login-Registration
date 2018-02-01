@@ -12,7 +12,6 @@ showForm:boolean = false;
 submitSpin:boolean;
 errorMessage:string;
 constructor(public httpService: HttpService) { }
-
   ngOnInit() {
   }
 
@@ -21,7 +20,6 @@ constructor(public httpService: HttpService) { }
   }
 
   addOption(newOption) {
-    // console.log(newOption.value);
     this.submitSpin = true;
     this.httpService.addOption(newOption.value).then((data) => {
       this.submitSpin = false;

@@ -9,7 +9,7 @@
       <div *ngIf=errorMessage class="alert alert-danger alert--override">{{errorMessage}}</div>
       <div>
         <input type="submit" form="addNewOption" class="btn btn-danger btn-block btn-xs btn-alter--submit" [ngClass]="{'color': newOption.valid }"
-          [disabled]="!newOption.valid">
+          [disabled]="!newOption.valid || submitSpin">
       </div>
       <div *ngIf=submitSpin class="submit--loader"></div>
     </form>

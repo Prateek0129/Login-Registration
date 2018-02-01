@@ -2,10 +2,11 @@
 <div class="viewContent">
     <div *ngFor="let poll of pagedItems; let i = index" class="block">
         <div class="title">
-            <strong>{{i+1}}.</strong><span *ngIf="updatePollId!=poll._id"> {{poll.title}}</span>
+            <strong>{{i+1}}.</strong>
+            <span *ngIf="updatePollId!=poll._id"> {{poll.title}}</span>
         </div>
         <div *ngIf="updatePollId!=poll._id" class="update--button">
-            <input type="button" (click)="doUpdate(poll._id)" value="edit" class="btn btn-primary">
+            <input type="button" (click)="doUpdate(poll._id)" value="Edit" class="btn btn-primary">
         </div>
         <div *ngIf="updatePollId==poll._id" class="update--form">
             <form #update="ngForm" id="title" (ngSubmit)="onUpdate(update)">
@@ -17,6 +18,10 @@
                 <input type="submit" form="title" class="btn btn-primary" [disabled]="update.invalid">
                 <div *ngIf=updateSpin class="update--title--loader"></div>
             </div>
+        </div>
+        <div class="delete--button">
+            <input type="button" (click)="onDelete(poll._id)" value="Delete" class="btn btn-primary">
+            <div *ngIf="deleteSpin && deleteId==poll._id" class="delete--poll--loader"></div>
         </div>
         <div *ngFor="let option of poll.options; let j = index" class="result">
             <div class="option option{{j%4}}">
@@ -38,7 +43,7 @@
         </div>
         <app-add-option [pollId]=(poll._id)></app-add-option>
     </div>
-    <div class="pagination--align">
+    <div *ngIf=count class="pagination--align">
         <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
             <li [ngClass]="{disabled:pager.currentPage === 1}">
                 <a (click)="setPage(1)">First</a>
@@ -56,5 +61,10 @@
                 <a (click)="setPage(pager.totalPages)">Last</a>
             </li>
         </ul>
+    </div>
+    <div *ngIf=!count>
+        <div class="no--polls">
+            No Polls Available
+        </div>
     </div>
 </div>

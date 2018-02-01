@@ -137,14 +137,14 @@ export class HttpService {
 
   deleteOption(pollId,pollText,pollVote) {
     return new Promise((resolve,reject) => {
+      this.deleteValue = {'option':pollText,'vote':pollVote};
+      _.remove(this.allVotes[_.findIndex(this.allVotes,{'_id':pollId})]['options'],this.deleteValue);
       const params = new HttpParams().set('id',pollId).set('option_text',pollText);
       this.http.get(environment['apiBase'] + '/delete_poll_option', {
         params
       }).subscribe((data)=> {
         if(!data['error']){
           resolve(true);
-          this.deleteValue = {'option':pollText,'vote':pollVote}
-          _.remove(this.allVotes[_.findIndex(this.allVotes,{'_id':pollId})]['options'],this.deleteValue);
         } else {
           reject(data['data'])
         }
@@ -166,4 +166,20 @@ export class HttpService {
       })
     })
   }
+
+  onDelete(id) {
+    return new Promise((resolve,reject)=> {
+      const params =  new HttpParams().set('id',id);
+      this.http.get(environment['apiBase'] + '/delete_poll',{
+        params
+      }).subscribe((data)=> {
+        if(!data['error']){
+          resolve(true); 
+        } else {
+          reject(data['data'])
+        }
+      })
+    })
+  }
+
 }
