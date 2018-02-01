@@ -22,10 +22,10 @@ export class CreateComponent implements OnInit {
   private createPollForm() {
     this.createPollFormview = this.fb.group({
       title: '',
-      option1: undefined,
-      option2: undefined,
-      option3: undefined,
-      option4: undefined,
+      option1: '',
+      option2: '',
+      option3: '',
+      option4: '',
     }, {
       validator: (formGroup: FormGroup) => {
         return this.validateForm(formGroup);
