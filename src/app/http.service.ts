@@ -97,17 +97,12 @@ export class HttpService {
     })
   }
 
-  getToken(){
-    return localStorage.getItem('currentUser');
-   }
 
   submitPoll(data) {
     return new Promise((resolve,reject) => {
       this.key = _.keys(data)[0];
-      const headers = new HttpHeaders().set('access_token', this.getToken());
       const params = new HttpParams().set('id', this.key).set('option_text', data[this.key]);
       this.http.get(environment['apiBase'] + '/do_vote', {
-        headers,
         params
       })
         .subscribe((data) => {

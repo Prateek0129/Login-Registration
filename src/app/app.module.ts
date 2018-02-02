@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginService } from './login.service';
 import { RegisterService } from './register.service';
 import { HttpService } from './http.service';
@@ -22,6 +22,7 @@ import { SideMenuComponent } from './homepage/side-menu/side-menu.component';
 import { PaginationService } from './pagination.service';
 import { AddOptionComponent } from './homepage/view-poll/add-option/add-option.component';
 import { DeleteOptionComponent } from './homepage/view-poll/delete-option/delete-option.component';
+import { MyHttpInterceptor } from './interceptors/my-http-interceptor';
 @NgModule({
 
   imports: [
@@ -51,6 +52,11 @@ import { DeleteOptionComponent } from './homepage/view-poll/delete-option/delete
     RouteAuthGuard,
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     PaginationService,
+    {
+      provide: HTTP_INTERCEPTORS, 
+      useClass: MyHttpInterceptor, 
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
