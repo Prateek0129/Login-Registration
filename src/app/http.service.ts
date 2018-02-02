@@ -4,7 +4,6 @@ import { promise } from 'selenium-webdriver';
 import { HttpErrorResponse } from '@angular/common/http/src/response';
 import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
-import { Http, Headers } from '@angular/http';
 
 import * as _ from 'lodash';
 
@@ -97,17 +96,12 @@ export class HttpService {
     })
   }
 
-  getToken(){
-    return localStorage.getItem('currentUser');
-   }
 
   submitPoll(data) {
     return new Promise((resolve,reject) => {
       this.key = _.keys(data)[0];
-      const headers = new HttpHeaders().set('access_token', this.getToken());
       const params = new HttpParams().set('id', this.key).set('option_text', data[this.key]);
       this.http.get(environment['apiBase'] + '/do_vote', {
-        headers,
         params
       })
         .subscribe((data) => {
